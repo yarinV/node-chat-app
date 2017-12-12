@@ -26,6 +26,16 @@ class Users{
 
     return namesArray;
   }
+  
+  userAlreadyExist(name, room){
+    var usersInTheRoom = this.users.filter((user)=> user.room === room);
+    var sameNameUsers = usersInTheRoom.filter((user)=> user.name === name);
+    if(sameNameUsers.length >= 1){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
 }
 

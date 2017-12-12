@@ -23,6 +23,10 @@ io.on('connection', (socket) => {
       return cb('Name and room are required!');
     }
 
+    if( users.userAlreadyExist(params.name, params.room) ){
+      return cb('Name already taken!')
+    }
+
     socket.join(params.room);
     users.removeUser(socket.id);
     users.addUser(socket.id, params.name, params.room);
